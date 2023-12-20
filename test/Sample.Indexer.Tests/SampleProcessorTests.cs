@@ -5,7 +5,6 @@ using AElfIndexer.Client;
 using AElfIndexer.Client.Handlers;
 using AElfIndexer.Grains.State.Client;
 using Nethereum.Hex.HexConvertors.Extensions;
-using Sample.Indexer.Tests;
 using Sample.Indexer.Entities;
 using Sample.Indexer.Processors;
 using Shouldly;

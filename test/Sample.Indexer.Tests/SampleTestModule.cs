@@ -1,5 +1,4 @@
 using System.Reflection;
-using AElf.Contracts.MultiToken;
 using AElf.Indexing.Elasticsearch;
 using AElf.Indexing.Elasticsearch.Options;
 using AElf.Indexing.Elasticsearch.Services;
@@ -12,7 +11,6 @@ using Elasticsearch.Net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using Sample.Indexer;
 using Sample.Indexer.Orleans.TestBase;
 using Volo.Abp;
 using Volo.Abp.Autofac;

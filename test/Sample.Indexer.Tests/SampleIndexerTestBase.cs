@@ -2,7 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using AElfIndexer.Client.Providers;
 using AElfIndexer.Grains;
 using AElfIndexer.Grains.State.Client;
-using Sample.Indexer.Tests;
 using Sample.Indexer.Orleans.TestBase;
 
 namespace Sample.Indexer.Tests;

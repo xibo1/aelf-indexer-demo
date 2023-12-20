@@ -1,6 +1,16 @@
+using GraphQL;
+using Volo.Abp.Application.Dtos;
+
 namespace Sample.Indexer.GraphQL;
 
-public class SampleResultDto
+public abstract class QueryDto: PagedResultRequestDto
+{
+    
+    [Name("playerAddress")]
+    public string PlayerAddress { get; set; }
+}
+
+public class ResultDto
 {
     public List<TransactionData> Data { get; set; }
 }
@@ -13,4 +23,3 @@ public class TransactionData
     
     public long Amount { get; set; }
 }
-
