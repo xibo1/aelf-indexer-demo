@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using Orleans;
 using Volo.Abp.ObjectMapping;
 
-namespace Sample.Indexer.Handlers;
+namespace Sample.Indexer.Handler;
 
 public class SampleHandler : TransactionDataHandler
 {

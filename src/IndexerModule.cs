@@ -3,7 +3,7 @@ using AElfIndexer.Client.Handlers;
 using AElfIndexer.Grains.State.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Sample.Indexer.GraphQL;
-using Sample.Indexer.Handlers;
+using Sample.Indexer.Handler;
 using Sample.Indexer.Processors;
 using Volo.Abp.Modularity;
 

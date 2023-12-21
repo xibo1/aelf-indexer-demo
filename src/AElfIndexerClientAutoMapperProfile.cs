@@ -5,6 +5,8 @@ using Sample.Indexer.GraphQL;
 
 namespace Sample.Indexer;
 
+// ReSharper disable once InconsistentNaming
+// ReSharper disable once UnusedType.Global
 public class TestGraphQLAutoMapperProfile : Profile
 {
     public TestGraphQLAutoMapperProfile()

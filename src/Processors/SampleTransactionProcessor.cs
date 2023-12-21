@@ -16,7 +16,7 @@ public class SampleTransactionProcessor : AElfLogEventProcessorBase<SampleEvent,
 
     public SampleTransactionProcessor(ILogger<SampleTransactionProcessor> logger,
         IAElfIndexerClientEntityRepository<SampleIndexEntry, TransactionInfo> sampleIndexRepository,
-        IOptionsSnapshot<ContractInfoOptions> contractInfoOptions,
+        IOptions<ContractInfoOptions> contractInfoOptions,
         IObjectMapper objectMapper) : base(logger)
     {
         _sampleIndexRepository = sampleIndexRepository;

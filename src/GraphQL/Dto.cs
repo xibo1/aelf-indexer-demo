@@ -7,11 +7,13 @@ public abstract class QueryDto: PagedResultRequestDto
 {
     
     [Name("playerAddress")]
+    // ReSharper disable once UnusedAutoPropertyAccessor.Global
     public string PlayerAddress { get; set; }
 }
 
 public class ResultDto
 {
+    // ReSharper disable once UnusedAutoPropertyAccessor.Global
     public List<TransactionData> Data { get; set; }
 }
 

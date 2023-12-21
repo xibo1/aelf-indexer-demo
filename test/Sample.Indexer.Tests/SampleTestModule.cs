@@ -29,10 +29,11 @@ namespace Sample.Indexer.Tests;
     typeof(AbpAutoMapperModule),
     typeof(AbpAutofacModule),
     typeof(AElfIndexingElasticsearchModule))]
+// ReSharper disable once ClassNeverInstantiated.Global
 public class SampleIndexerTestModule : AbpModule
 {
-    private string ClientId { get; } = "TestPortkeyClient";
-    private string Version { get; } = "TestPortkeyVersion";
+    private static string ClientId => "TestPortkeyClient";
+    private static string Version => "TestPortkeyVersion";
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
@@ -56,7 +57,7 @@ public class SampleIndexerTestModule : AbpModule
         {
             o.NodeConfigList = new List<NodeConfig>
             {
-                new NodeConfig { ChainId = "AELF", Endpoint = "http://mainchain.io" }
+                new() { ChainId = "AELF", Endpoint = "http://mainchain.io" }
             };
         });
 
@@ -103,7 +104,7 @@ public class SampleIndexerTestModule : AbpModule
         );
     }
 
-    private async Task CreateIndexAsync(IServiceProvider serviceProvider)
+    private static async Task CreateIndexAsync(IServiceProvider serviceProvider)
     {
         var types = GetTypesAssignableFrom<IIndexBuild>(typeof(SampleIndexerModule).Assembly);
         var elasticIndexService = serviceProvider.GetRequiredService<IElasticIndexService>();
@@ -114,23 +115,22 @@ public class SampleIndexerTestModule : AbpModule
         }
     }
 
-    private List<Type> GetTypesAssignableFrom<T>(Assembly assembly)
+    private static List<Type> GetTypesAssignableFrom<T>(Assembly assembly)
     {
         var compareType = typeof(T);
         return assembly.DefinedTypes
             .Where(type => compareType.IsAssignableFrom(type) && !compareType.IsAssignableFrom(type.BaseType) &&
-                           !type.IsAbstract && type.IsClass && compareType != type)
+                           type is { IsAbstract: false, IsClass: true } && compareType != type)
             .Cast<Type>().ToList();
     }
 
-    private async Task DeleteIndexAsync(IServiceProvider serviceProvider)
+    private static async Task DeleteIndexAsync(IServiceProvider serviceProvider)
     {
         var elasticIndexService = serviceProvider.GetRequiredService<IElasticIndexService>();
         var types = GetTypesAssignableFrom<IIndexBuild>(typeof(SampleIndexerModule).Assembly);
 
-        foreach (var t in types)
+        foreach (var indexName in types.Select(t => $"{ClientId}-{Version}.{t.Name}".ToLower()))
         {
-            var indexName = $"{ClientId}-{Version}.{t.Name}".ToLower();
             await elasticIndexService.DeleteIndexAsync(indexName);
         }
     }

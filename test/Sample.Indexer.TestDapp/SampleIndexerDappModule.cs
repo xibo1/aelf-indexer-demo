@@ -33,6 +33,7 @@ namespace Sample.Indexer.TestDapp;
     typeof(SampleIndexerModule)
     // typeof(AElfIndexerMongoDbModule)
     )]
+// ReSharper disable once ClassNeverInstantiated.Global
 public class BingoGameIndexerDappModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
@@ -86,7 +87,7 @@ public class BingoGameIndexerDappModule : AbpModule
         });
     }
     
-    private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
+    private static void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
     {
         context.Services.AddCors(options =>
         {

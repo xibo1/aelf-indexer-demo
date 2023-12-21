@@ -14,8 +14,8 @@ public abstract class SampleIndexerTestBase: SampleIndexerOrleansTestBase<Sample
     private readonly IBlockStateSetProvider<TransactionInfo> _blockStateSetTransactionInfoProvider;
     private readonly IDAppDataProvider _dAppDataProvider;
     private readonly IDAppDataIndexManagerProvider _dAppDataIndexManagerProvider;
-    
-    public SampleIndexerTestBase()
+
+    protected SampleIndexerTestBase()
     {
         _indexerClientInfoProvider = GetRequiredService<IAElfIndexerClientInfoProvider>();
         _blockStateSetLogEventInfoProvider = GetRequiredService<IBlockStateSetProvider<LogEventInfo>>();

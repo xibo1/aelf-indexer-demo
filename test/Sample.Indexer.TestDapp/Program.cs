@@ -10,9 +10,10 @@ using Volo.Abp.Modularity.PlugIns;
 
 namespace Sample.Indexer.TestDapp;
 
+// ReSharper disable once ClassNeverInstantiated.Global
 public class Program
 {
-    public async static Task<int> Main(string[] args)
+    public static async Task<int> Main(string[] args)
     {
         var configuration = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json")

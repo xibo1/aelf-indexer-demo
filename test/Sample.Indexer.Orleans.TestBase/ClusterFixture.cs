@@ -17,11 +17,14 @@ public class ClusterFixture:IDisposable,ISingletonDependency
         Cluster.Deploy();
     }
 
+#pragma warning disable CA1816
     public void Dispose()
+#pragma warning restore CA1816
     {
         Cluster.StopAllSilos();
     }
 
+    // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Local
     public TestCluster Cluster { get; private set; }
     
     private class TestSiloConfigurations : ISiloConfigurator

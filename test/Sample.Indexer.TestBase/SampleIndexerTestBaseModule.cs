@@ -4,6 +4,7 @@ using Volo.Abp.Autofac;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Data;
+using Volo.Abp.DependencyInjection;
 using Volo.Abp.Modularity;
 using Volo.Abp.Threading;
 
@@ -32,16 +33,14 @@ public class SampleIndexerTestBaseModule:AbpModule
         SeedTestData(context);
     }
 
-    private static void SeedTestData(ApplicationInitializationContext context)
+    private static void SeedTestData(IServiceProviderAccessor context)
     {
         AsyncHelper.RunSync(async () =>
         {
-            using (var scope = context.ServiceProvider.CreateScope())
-            {
-                await scope.ServiceProvider
-                    .GetRequiredService<IDataSeeder>()
-                    .SeedAsync();
-            }
+            using var scope = context.ServiceProvider.CreateScope();
+            await scope.ServiceProvider
+                .GetRequiredService<IDataSeeder>()
+                .SeedAsync();
         });
     }
 }

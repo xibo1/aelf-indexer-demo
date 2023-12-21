@@ -8,6 +8,7 @@ using Volo.Abp.ObjectMapping;
 namespace Sample.Indexer.GraphQL;
 public class Query
 {
+    // ReSharper disable once UnusedMember.Global
     public static async Task<ResultDto> SampleIndexerQuery(
     [FromServices] IAElfIndexerClientEntityRepository<SampleIndexEntry, LogEventInfo> repository,
     [FromServices] IObjectMapper objectMapper,  QueryDto dto)

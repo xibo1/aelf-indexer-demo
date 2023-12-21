@@ -2,8 +2,8 @@ using Xunit;
 
 namespace Sample.Indexer.Orleans.TestBase;
 
-[CollectionDefinition(ClusterCollection.Name)]
+[CollectionDefinition(Name)]
 public class ClusterCollection:ICollectionFixture<ClusterFixture>
 {
-    public const string Name = "ClusterCollection";
+    private const string Name = "ClusterCollection";
 }

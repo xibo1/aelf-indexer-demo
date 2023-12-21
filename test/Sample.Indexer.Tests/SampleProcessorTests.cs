@@ -12,7 +12,7 @@ using Xunit;
 
 namespace Sample.Indexer.Tests;
 
-public class SampleProcessorTests: SampleIndexerTestBase
+public sealed class SampleProcessorTests: SampleIndexerTestBase
 {
     private readonly IAElfIndexerClientEntityRepository<SampleIndexEntry, LogEventInfo> _sampleIndexRepository;
 
